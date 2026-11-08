@@ -1,0 +1,17 @@
+{
+  "model": "qwen3.8-27b",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "input_format": "openai_images",
+  "stream": true,
+  "initial_frames": 128,
+  "temperature": 0,
+  "inference_seed": 20260906,
+  "max_rounds": 8,
+  "max_repairs": 7,
+  "max_requests_per_question": 80,
+  "max_images_per_question": 8000,
+  "question_timeout_seconds": 3600,
+  "default_max_output_tokens": 8192,
+  "qa_concurrency": 1,
+  "automatic_service_retries": 0
+}

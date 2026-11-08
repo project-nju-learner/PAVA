@@ -1,0 +1,14 @@
+# Install a matching CUDA torch/torchvision pair for your machine first.
+# Accepted client runtime used torch 2.13.0 / torchvision 0.28.0 / Python 3.12.7.
+google-genai==2.20.0
+open_clip_torch==3.3.0
+transformers==4.51.3
+tokenizers==0.21.4
+numpy==2.3.5
+pillow==12.3.0
+opencv-python==4.11.0.86
+scipy==1.17.1
+pydantic==2.13.4
+requests==2.34.2
+httpx==0.28.1
+# ASR generation is optional; install faster-whisper separately when using --asr-model.
