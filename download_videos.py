@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """冻结 597 题所需的 465 个视频：公开源下载（Ubuntu，Python 3.9+，无 pip 依赖）。
 
-只需要把本文件交给对方；465 个视频名单已经内置，不需要原服务器权限。
+465 个视频名单已经内置，不需要原服务器权限。
+80题试跑（一行）：python3 download_videos.py /data/rebuttal597 --roster data/roster80.json
+--roster 只限制保存的视频；完整归档的下载流量不会随题数等比例减少。
 运行命令（一行）：python3 download_videos.py /data/rebuttal597
 仅看计划（一行，不联网）：python3 download_videos.py --plan
 后台运行（一行）：tmux new-session -s videos597 'python3 download_videos.py /data/rebuttal597'
@@ -699,13 +701,28 @@ def extract_tar_parts(root, parts, rows):
         raise DownloadError(f"LongVideoBench extraction incomplete: {len(pending)} videos remain.")
 
 
-def print_plan():
-    counts = Counter(r["dataset"] for r in PLAN["rows"])
-    print("Frozen 597 questions / 465 unique videos; no resampling.")
+def selected_rows(roster=None):
+    if roster is None:
+        return PLAN["rows"], 597
+    samples = json.loads(Path(roster).read_text(encoding="utf-8-sig"))["samples"]
+    if not samples or len({r["question_id"] for r in samples}) != len(samples):
+        raise DownloadError("Roster must contain unique question IDs.")
+    wanted = {(r["dataset"], r["video_filename"]) for r in samples}
+    rows = [r for r in PLAN["rows"] if (r["dataset"], r["filename"]) in wanted]
+    if {(r["dataset"], r["filename"]) for r in rows} != wanted:
+        raise DownloadError("Roster contains videos outside the bundled public-source plan.")
+    return rows, len(samples)
+
+
+def print_plan(rows=None, question_count=597):
+    rows = PLAN["rows"] if rows is None else rows
+    counts = Counter(r["dataset"] for r in rows)
+    print(f"Frozen {question_count} questions / {len(rows)} unique videos; no resampling.")
     for dataset in SOURCES:
-        size = sum(r["bytes"] for r in PLAN["rows"] if r["dataset"] == dataset)
+        size = sum(r["bytes"] for r in rows if r["dataset"] == dataset)
         print(f"  {dataset}: {counts[dataset]} videos, {size / 1e9:.2f} GB; {SOURCES[dataset]}")
-    print("Output about 115.1 GB; full archive traffic about 600 GB. Allow >=250 GB free disk.")
+    print(f"Selected video output: {sum(r['bytes'] for r in rows)/1e9:.2f} GB. Whole-archive traffic can be much larger (full 597 plan about 600 GB). Allow >=250 GB free disk.")
+    print("Archives are removed after extraction; expanding the roster later may download some volumes again.")
     print("LongVideoBench requires accepting the official HF dataset conditions.")
 
 
@@ -713,8 +730,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("output", nargs="?", default="rebuttal597_videos", type=Path)
     parser.add_argument("--plan", action="store_true", help="Print the frozen plan; no network or file writes.")
+    parser.add_argument("--roster", type=Path, help="Restrict downloads to videos named in a frozen roster JSON, e.g. data/roster80.json.")
     args = parser.parse_args()
-    print_plan()
+    rows, question_count = selected_rows(args.roster)
+    print_plan(rows, question_count)
     if args.plan:
         return
     if sys.platform != "linux":
@@ -728,7 +747,7 @@ def main():
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise DownloadError("Another downloader is using this target directory.") from None
-        run(root)
+        run(root, rows, question_count)
 
 
 def discard_finished_archives(root, groups):
@@ -748,8 +767,9 @@ def discard_finished_archives(root, groups):
                     (cache / Path(name).name).unlink(missing_ok=True)
 
 
-def run(root):
-    groups = {ds: [r for r in PLAN["rows"] if r["dataset"] == ds] for ds in SOURCES}
+def run(root, selected=None, question_count=597):
+    selected = PLAN["rows"] if selected is None else selected
+    groups = {ds: [r for r in selected if r["dataset"] == ds] for ds in SOURCES}
     discard_finished_archives(root, groups)
     active = [ds for ds, rows in groups.items() if not all(complete(root, r) for r in rows)]
     if active:
@@ -788,15 +808,15 @@ def run(root):
                     path = download(public_url(dataset, name), cache / Path(name).name, catalogs[dataset][name], opener, token)
                     extract_zip(root, path, selected)
                     path.unlink()
-    if not all(complete(root, row) for row in PLAN["rows"]):
+    if not all(complete(root, row) for row in selected):
         raise DownloadError("Some videos remain missing.")
     manifest = {
-        "question_count": 597,
-        "video_count": 465,
-        "files": [dict(row, source_repo=SOURCES[row["dataset"]], path=video_path(root, row).relative_to(root).as_posix()) for row in PLAN["rows"]],
+        "question_count": question_count,
+        "video_count": len(selected),
+        "files": [dict(row, source_repo=SOURCES[row["dataset"]], path=video_path(root, row).relative_to(root).as_posix()) for row in selected],
     }
     (root / "video_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("COMPLETE: 465/465 videos. Manifest: " + str(root / "video_manifest.json"), flush=True)
+    print(f"COMPLETE: {len(selected)}/{len(selected)} videos. Manifest: " + str(root / "video_manifest.json"), flush=True)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1713 @@
+{
+  "parent_roster": "roster597.json",
+  "parent_sampling_seed": 42,
+  "selection_rule": "First 20 questions per dataset, preserving the parent within-dataset order; interleaved by dataset.",
+  "counts": {
+    "LVBench": 20,
+    "LongVideoBench": 20,
+    "Video-MME": 20,
+    "MLVU": 20
+  },
+  "samples": [
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_rk24OUu_kJQ_2166",
+      "official_question_id": "2166",
+      "video_id": "rk24OUu_kJQ",
+      "official_video_id": "rk24OUu_kJQ",
+      "question": "There is a song in which the female singer wears a tight fitting astronaut suit. How does she leave the stage?",
+      "options": [
+        "A. She is carried down by the dancers",
+        "B. She goes downstairs from one side of the stage",
+        "C. She descends in the elevator on the stage",
+        "D. She is hoisted off the stage by a wire"
+      ],
+      "question_types": [
+        "event understanding",
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 5391.3,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "rk24OUu_kJQ.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_ysRFFN5nzqE_1",
+      "official_question_id": "ysRFFN5nzqE_1",
+      "video_id": "lvb_ysRFFN5nzqE",
+      "official_video_id": "ysRFFN5nzqE",
+      "question": "On the left side of the screen, there is an orange area above the pink text on a white screen, and on the right side of the white screen there are two character cutouts from top to bottom. When the subtitle says 'actually we can actually change that to', what shape is the orange area in the middle of the white screen?",
+      "options": [
+        "A. circle",
+        "B. triangle",
+        "C. rectangle",
+        "D. stair shape",
+        "E. square"
+      ],
+      "question_types": [
+        "T2A"
+      ],
+      "topic": "KS-Knowledge-STEM",
+      "duration_metadata_sec": 2161.16,
+      "benchmark_split": "public_validation",
+      "video_filename": "ysRFFN5nzqE.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "819-1",
+      "official_question_id": "819-1",
+      "video_id": "mme_819",
+      "official_video_id": "GsYi-l5PEEs",
+      "question": "What is the man doing when the carousel starts spinning for the first time?",
+      "options": [
+        "A. He is trying to stand on the balance board on the third level.",
+        "B. He is jumping from the ground onto the platform.",
+        "C. He is standing on the balance board on the fourth level.",
+        "D. He is having a conversation with the little boy on the ground."
+      ],
+      "question_types": [
+        "Action Recognition"
+      ],
+      "topic": "Artistic Performance",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "GsYi-l5PEEs.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1408",
+      "official_question_id": "Q1408",
+      "video_id": "mlvu_en_tv_28",
+      "official_video_id": "en_tv_28",
+      "question": "What color is the old woman's clothes in the video?\n(A) Yellow\n(B) Black\n(C) Red\n(D) Purple\n",
+      "options": [
+        "A. Yellow",
+        "B. Black",
+        "C. Red",
+        "D. Purple"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 575.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "en_tv_28.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_8QdE--Y-x7U_1967",
+      "official_question_id": "1967",
+      "video_id": "8QdE--Y-x7U",
+      "official_video_id": "8QdE--Y-x7U",
+      "question": "Where is the harp player, respective to the people on the stage?",
+      "options": [
+        "A. Right side of stage",
+        "B. Second floor on the left",
+        "C. On the left side of the stage",
+        "D. Second floor on the right"
+      ],
+      "question_types": [
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 5699.41,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "8QdE--Y-x7U.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_@jonijawne-7214559428471770374_0",
+      "official_question_id": "@jonijawne-7214559428471770374_0",
+      "video_id": "lvb_@jonijawne-7214559428471770374",
+      "official_video_id": "@jonijawne-7214559428471770374",
+      "question": "A man wearing a gray-green top and a black mask, with black short hair clipped with four red and yellow hair curlers, holding a blue hair dryer in one hand, what is he doing when the subtitle 'Firstly, starting off with flat hair, you want to use' appears?",
+      "options": [
+        "A. Blow-drying hair",
+        "B. Brushing teeth",
+        "C. Washing face",
+        "D. Spraying hair with styling mist",
+        "E. Burning hair"
+      ],
+      "question_types": [
+        "T2E"
+      ],
+      "topic": "LV-Lifestyle-Life-Vlogs",
+      "duration_metadata_sec": 28.53,
+      "benchmark_split": "public_validation",
+      "video_filename": "7214559428471770374.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "639-1",
+      "official_question_id": "639-1",
+      "video_id": "mme_639",
+      "official_video_id": "PHe0bXAIuk0",
+      "question": "What is the main focus of this video?",
+      "options": [
+        "A. Providing a simplified framework for understanding the core mechanics driving economic fluctuations and cycles.",
+        "B. Exploring the intricate details of various economic markets and their interactions.",
+        "C. Analyzing the role of government policies and central bank interventions in managing economic crises.",
+        "D. Examining the impact of individual spending habits and consumer choices on overall economic performance."
+      ],
+      "question_types": [
+        "Information Synopsis"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "PHe0bXAIuk0.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q109",
+      "official_question_id": "Q109",
+      "video_id": "mlvu_needle_40",
+      "official_video_id": "needle_40",
+      "question": "What is the American toad's strategy to avoid detection in the video?\n(A) Camouflage\n(B) Running away\n(C) Fighting\n(D) Hiding\n",
+      "options": [
+        "A. Camouflage",
+        "B. Running away",
+        "C. Fighting",
+        "D. Hiding"
+      ],
+      "question_types": [
+        "needle"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 477.20000000000005,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "needle_40.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_1FsiZgGZU70_3420",
+      "official_question_id": "3420",
+      "video_id": "1FsiZgGZU70",
+      "official_video_id": "1FsiZgGZU70",
+      "question": "What color is vlogger's car?",
+      "options": [
+        "A. White",
+        "B. Black",
+        "C. Green",
+        "D. Blue"
+      ],
+      "question_types": [
+        "entity recognition",
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2254.47,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "1FsiZgGZU70.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_1pxrIj9Xyps_2",
+      "official_question_id": "1pxrIj9Xyps_2",
+      "video_id": "lvb_1pxrIj9Xyps",
+      "official_video_id": "1pxrIj9Xyps",
+      "question": "Under a blue sky, a woman with long purple hair and a black short-sleeve shirt is in the middle of the scene. There is a white house behind her on the left and trees on the right. After the subtitle 'our blood for example' appears, what action does the woman take?",
+      "options": [
+        "A. Raised one hand",
+        "B. Covered her face",
+        "C. Stood up",
+        "D. Raised both hands",
+        "E. Took out a book"
+      ],
+      "question_types": [
+        "T3E"
+      ],
+      "topic": "KG-Knowledge-Geography",
+      "duration_metadata_sec": 1667.13,
+      "benchmark_split": "public_validation",
+      "video_filename": "1pxrIj9Xyps.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "609-2",
+      "official_question_id": "609-2",
+      "video_id": "mme_609",
+      "official_video_id": "HProiNnmGwI",
+      "question": "Which of the following statements is correct according to the video?",
+      "options": [
+        "A. The Crusaders won the first battle after they landed in Asia Minor.",
+        "B. Pope Gregory waged a campaign against the Muslim world.",
+        "C. The Third Crusade was held to conquer Russia.",
+        "D. The Muslim empires experienced divisions before the Crusade arrived."
+      ],
+      "question_types": [
+        "Attribute Perception"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "HProiNnmGwI.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q2010",
+      "official_question_id": "Q2010",
+      "video_id": "mlvu_order_128",
+      "official_video_id": "order_128",
+      "question": "Arrange the following events from the video in the correct chronological order: (1)Woman tapes her hands with white tape; (2)Woman starts boxing in the ring with a guy; (3)Woman does sit ups on a towel on the beach; (4)Pictures of woman in her bikini are shown.\n(A) 4->3->2->1\n(B) 3->2->1->4\n(C) 2->1->3->4\n(D) 1->2->3->4\n",
+      "options": [
+        "A. 4->3->2->1",
+        "B. 3->2->1->4",
+        "C. 2->1->3->4",
+        "D. 1->2->3->4"
+      ],
+      "question_types": [
+        "order"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 665.3399999999999,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "order_128.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_wgBlACG927Y_3102",
+      "official_question_id": "3102",
+      "video_id": "wgBlACG927Y",
+      "official_video_id": "wgBlACG927Y",
+      "question": "How many pieces are in the purple roll dish the vloggers shoot at the dinner?",
+      "options": [
+        "A. 14",
+        "B. 10",
+        "C. 8",
+        "D. 12"
+      ],
+      "question_types": [
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2331.28,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "wgBlACG927Y.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_NAJOZTNkhlI_1",
+      "official_question_id": "NAJOZTNkhlI_1",
+      "video_id": "lvb_NAJOZTNkhlI",
+      "official_video_id": "NAJOZTNkhlI",
+      "question": "This is a document, within which there are bolded words 'START' and 'YIELD'. The page number at the bottom of the document shows '3'. What happened when this document first appeared?",
+      "options": [
+        "A. The bolded word 'YIELD' in the document was highlighted in green.",
+        "B. The bolded word 'START' in the document was highlighted in green.",
+        "C. The page number '3' in the document was highlighted in yellow.",
+        "D. The bolded word 'START' in the document was highlighted in yellow.",
+        "E. The bolded word 'YIELD' in the document was highlighted in yellow."
+      ],
+      "question_types": [
+        "O2E"
+      ],
+      "topic": "KC-Knowledge-Computer-Science",
+      "duration_metadata_sec": 3135.5,
+      "benchmark_split": "public_validation",
+      "video_filename": "NAJOZTNkhlI.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "854-1",
+      "official_question_id": "854-1",
+      "video_id": "mme_854",
+      "official_video_id": "E83XxGvEPtI",
+      "question": "What is the main content of the video?",
+      "options": [
+        "A. A day in the life of a college student.",
+        "B. A day in the life of a software engineer working from home.",
+        "C. A day in the life of a content creator.",
+        "D. A day in the life of a music creator."
+      ],
+      "question_types": [
+        "Information Synopsis"
+      ],
+      "topic": "Life Record",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "E83XxGvEPtI.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1900",
+      "official_question_id": "Q1900",
+      "video_id": "mlvu_game_42",
+      "official_video_id": "game_42",
+      "question": "What is this video about?\n(A) A person demonstrating how to win in a shooting game\n(B) Someone live-streaming a singing performance\n(C) A person demonstrating how to cook in the game\n(D) A person demonstrating how to build a device in the game\n",
+      "options": [
+        "A. A person demonstrating how to win in a shooting game",
+        "B. Someone live-streaming a singing performance",
+        "C. A person demonstrating how to cook in the game",
+        "D. A person demonstrating how to build a device in the game"
+      ],
+      "question_types": [
+        "topic_reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 1173.14,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "game_42.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_QB7FoIpx8os_2481",
+      "official_question_id": "2481",
+      "video_id": "QB7FoIpx8os",
+      "official_video_id": "QB7FoIpx8os",
+      "question": "What color is the inner layer of clothing worn by the second speaker in the video?",
+      "options": [
+        "A. Green",
+        "B. Red",
+        "C. Gray",
+        "D. Black"
+      ],
+      "question_types": [
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 5867.33,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "QB7FoIpx8os.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_KTY9bogonyw_1",
+      "official_question_id": "KTY9bogonyw_1",
+      "video_id": "lvb_KTY9bogonyw",
+      "official_video_id": "KTY9bogonyw",
+      "question": "In the middle of the screen, there is a white-haired man dressed in a black suit with a dark blue tie, sitting in front of a white flag with a blue Star of David. What is this white-haired man doing?",
+      "options": [
+        "A. Drinking water",
+        "B. Sleeping",
+        "C. Writing",
+        "D. Speaking into a microphone",
+        "E. Brewing tea"
+      ],
+      "question_types": [
+        "S2E"
+      ],
+      "topic": "NP-News-Programs",
+      "duration_metadata_sec": 2617.55,
+      "benchmark_split": "public_validation",
+      "video_filename": "KTY9bogonyw.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "694-3",
+      "official_question_id": "694-3",
+      "video_id": "mme_694",
+      "official_video_id": "Sp2nxlrQ89w",
+      "question": "In accordance with the video footage, why does the orange stick man stop destroying?",
+      "options": [
+        "A. He realizes he has hurt his son.",
+        "B. He has no energy.",
+        "C. He is too sad to do this.",
+        "D. He forgives people in the world."
+      ],
+      "question_types": [
+        "Action Reasoning"
+      ],
+      "topic": "Film & Television",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "Sp2nxlrQ89w.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1820",
+      "official_question_id": "Q1820",
+      "video_id": "mlvu_232",
+      "official_video_id": "232",
+      "question": "Who is the person doing the explanation in the video?\n(A) It's a man\n(B) It's a woman\n(C) It's a child\n(D) It's an old person\n",
+      "options": [
+        "A. It's a man",
+        "B. It's a woman",
+        "C. It's a child",
+        "D. It's an old person"
+      ],
+      "question_types": [
+        "topic_reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 480.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "232.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_KktLi3UifPY_1194",
+      "official_question_id": "1194",
+      "video_id": "KktLi3UifPY",
+      "official_video_id": "KktLi3UifPY",
+      "question": "What payment method appears in the video at last?",
+      "options": [
+        "A. Alipay",
+        "B. RPay",
+        "C. Apple Pay",
+        "D. WeChat Pay"
+      ],
+      "question_types": [
+        "key information retrieval"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 6054.09,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "KktLi3UifPY.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_IGmuaY1jB1w_0",
+      "official_question_id": "IGmuaY1jB1w_0",
+      "video_id": "lvb_IGmuaY1jB1w",
+      "official_video_id": "IGmuaY1jB1w",
+      "question": "In the bottom right corner of the screen, there is a number 36. There are 9 colorful images in the center, and the top right corner has an image of an airplane. When the subtitles say 'find paper to the power,' what other objects are present on the screen?",
+      "options": [
+        "A. watch, radio, car, sunflower",
+        "B. watch, radio, car, boat",
+        "C. watch, radio, car, elephant",
+        "D. watch, radio, car, big tree"
+      ],
+      "question_types": [
+        "T2O"
+      ],
+      "topic": "KC-Knowledge-Computer-Science",
+      "duration_metadata_sec": 1777.48,
+      "benchmark_split": "public_validation",
+      "video_filename": "IGmuaY1jB1w.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "684-2",
+      "official_question_id": "684-2",
+      "video_id": "mme_684",
+      "official_video_id": "NCNeFSJexSY",
+      "question": "Which direction is the narrator in the red facing in relation to the narrator in green?",
+      "options": [
+        "A. Right front.",
+        "B. Left front.",
+        "C. Directly in front.",
+        "D. It is impossible to extrapolate."
+      ],
+      "question_types": [
+        "Spatial Perception"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "NCNeFSJexSY.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1511",
+      "official_question_id": "Q1511",
+      "video_id": "mlvu_xiaoliyu_5",
+      "official_video_id": "xiaoliyu_5",
+      "question": "What is the reaction of the cartoon crab group when they see the cartoon turtle?\n(A) Happy\n(B) Crying\n(C) Surprised\n(D) Run away\n",
+      "options": [
+        "A. Happy",
+        "B. Crying",
+        "C. Surprised",
+        "D. Run away"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 415.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "xiaoliyu_5.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_JlrzSvCsIjE_4025",
+      "official_question_id": "4025",
+      "video_id": "JlrzSvCsIjE",
+      "official_video_id": "JlrzSvCsIjE",
+      "question": "Why do Tiafoe and Federer tap each other in the fourth game of the second set?",
+      "options": [
+        "A. Tiafoe shows his apology for hit the ball on Federer's abdomen",
+        "B. Tiafoe encourges Federer after winning the game",
+        "C. Tiafoe shows his apology for hit the ball on Federer's head",
+        "D. Tiafoe shows his apology for hit the ball on Federer's leg"
+      ],
+      "question_types": [
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2791.62,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "JlrzSvCsIjE.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_@movie.explained6-7276598470151032066_0",
+      "official_question_id": "@movie.explained6-7276598470151032066_0",
+      "video_id": "lvb_@movie.explained6-7276598470151032066",
+      "official_video_id": "@movie.explained6-7276598470151032066",
+      "question": "In a room, a young man stands on the left side of the screen, and an elderly man with white hair, wearing a red plaid shirt, stands on the right side of the screen. The two face each other. What did this elderly man do the first time he appeared?",
+      "options": [
+        "A. Was washing his hair",
+        "B. Held a knife towards himself",
+        "C. Looked in the mirror",
+        "D. Held a knife towards the person in front",
+        "E. Was cutting his hair"
+      ],
+      "question_types": [
+        "O2E"
+      ],
+      "topic": "Recreational: MR-Movie-Recaps",
+      "duration_metadata_sec": 58.19,
+      "benchmark_split": "public_validation",
+      "video_filename": "7276598470151032066.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "677-1",
+      "official_question_id": "677-1",
+      "video_id": "mme_677",
+      "official_video_id": "MYxL_JLseC8",
+      "question": "What is the central content of the video?",
+      "options": [
+        "A. A professor is giving a speech online on how to design and build your outdoor kitchen.",
+        "B. A professor is discussing in the office with his students how to design and build your outdoor kitchen.",
+        "C. A professor is teaching a class in the classroom on how to design and build your outdoor kitchen.",
+        "D. None of the above."
+      ],
+      "question_types": [
+        "Information Synopsis"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "MYxL_JLseC8.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1375",
+      "official_question_id": "Q1375",
+      "video_id": "mlvu_movie101_57",
+      "official_video_id": "movie101_57",
+      "question": "What is the occupation of the old man in the video?\n(A) Scrap collector\n(B) Teacher\n(C) Police officer\n(D) Doctor\n",
+      "options": [
+        "A. Scrap collector",
+        "B. Teacher",
+        "C. Police officer",
+        "D. Doctor"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 753.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "movie101_57.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_CgvJqGxzRfE_4462",
+      "official_question_id": "4462",
+      "video_id": "CgvJqGxzRfE",
+      "official_video_id": "CgvJqGxzRfE",
+      "question": "Which judge turns last when the ninth contestant performs?",
+      "options": [
+        "A. BILL+TOM",
+        "B. Blocked",
+        "C. SHIRIN",
+        "D. GIOVANNI"
+      ],
+      "question_types": [
+        "event understanding"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 4557.96,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "CgvJqGxzRfE.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_@healthfood-7135100078221430058_0",
+      "official_question_id": "@healthfood-7135100078221430058_0",
+      "video_id": "lvb_@healthfood-7135100078221430058",
+      "official_video_id": "@healthfood-7135100078221430058",
+      "question": "On a white table, there is a white plate with strawberries on it. A person is holding a strawberry with their left hand, and holding a knife above the strawberry with their right hand. After saying 'Welcome back to episode 5 of my healthy snack series,' what happens to the strawberry?",
+      "options": [
+        "A. The strawberry is cut into small pieces",
+        "B. The strawberry is cut in half",
+        "C. The strawberry is covered in yellow powder",
+        "D. Blueberry sauce is added to the strawberry"
+      ],
+      "question_types": [
+        "TAA"
+      ],
+      "topic": "LC-Lifestyle-Cooking-Recipes",
+      "duration_metadata_sec": 17.05,
+      "benchmark_split": "public_validation",
+      "video_filename": "7135100078221430058.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "648-2",
+      "official_question_id": "648-2",
+      "video_id": "mme_648",
+      "official_video_id": "4iC9Qi3y9q8",
+      "question": "In which sequence are the following introduced in the video?\n① The Big Bang\n② The Hubble Telescope\n③ Redshift\n④ Dark Energy",
+      "options": [
+        "A. ①③②④.",
+        "B. ①②③④.",
+        "C. ②①④③.",
+        "D. ①③②④."
+      ],
+      "question_types": [
+        "Temporal Reasoning"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "4iC9Qi3y9q8.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1318",
+      "official_question_id": "Q1318",
+      "video_id": "mlvu_haimian_10",
+      "official_video_id": "haimian_10",
+      "question": "What did the cartoon starfish make for the cartoon sponge using wood?\n(A) A pair of pants\n(B) A toy\n(C) A pair of shoes\n(D) A piece of clothing\n",
+      "options": [
+        "A. A pair of pants",
+        "B. A toy",
+        "C. A pair of shoes",
+        "D. A piece of clothing"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 361.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "haimian_10.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_wgBlACG927Y_3082",
+      "official_question_id": "3082",
+      "video_id": "wgBlACG927Y",
+      "official_video_id": "wgBlACG927Y",
+      "question": "How does the vloggers leave the platform and go upstairs?",
+      "options": [
+        "A. After they get off the high-speed train, they go pass the ticket gate, exiting the train station",
+        "B. After they get off the high-speed train, they take the escalator and go pass the ticket gate, exiting the train station",
+        "C. After they get off the high-speed train, they take the escalator, go upstairs and go pass the ticket gate, exiting the train station",
+        "D. After they get off the high-speed train, they go upstairs and go pass the ticket gate, exiting the train station"
+      ],
+      "question_types": [
+        "summarization"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2331.28,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "wgBlACG927Y.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_mld0TnA2jEs_1",
+      "official_question_id": "mld0TnA2jEs_1",
+      "video_id": "lvb_mld0TnA2jEs",
+      "official_video_id": "mld0TnA2jEs",
+      "question": "A man wearing a red short-sleeve shirt and dark pants is sitting on the sofa with his hands spread out to the sides. There is a laptop on the left side of the sofa. Behind the sofa is an open kitchen with cabinets that are oak-colored. When the subtitle 'be used in machine learning algorithms' appears, what objects are present in the scene?",
+      "options": [
+        "A. watch",
+        "B. potted plant",
+        "C. pillow",
+        "D. umbrella",
+        "E. necklace"
+      ],
+      "question_types": [
+        "T2O"
+      ],
+      "topic": "KC-Knowledge-Computer-Science",
+      "duration_metadata_sec": 457.0,
+      "benchmark_split": "public_validation",
+      "video_filename": "mld0TnA2jEs.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "852-2",
+      "official_question_id": "852-2",
+      "video_id": "mme_852",
+      "official_video_id": "eno3UMEMQJI",
+      "question": "Which of the following descriptions about the author's use of Bluetooth headsets is correct?",
+      "options": [
+        "A. He only wore the left earphone.",
+        "B. He has headphones on both ears.",
+        "C. He only wore the right earphone.",
+        "D. He was not wearing headphones."
+      ],
+      "question_types": [
+        "Action Recognition"
+      ],
+      "topic": "Life Record",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "eno3UMEMQJI.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q598",
+      "official_question_id": "Q598",
+      "video_id": "mlvu_count_67",
+      "official_video_id": "count_67",
+      "question": "In this video, how many times does the scene of the 'pole vault' action appear in total?\n(A) 5\n(B) 4\n(C) 6\n(D) 2\n",
+      "options": [
+        "A. 5",
+        "B. 4",
+        "C. 6",
+        "D. 2"
+      ],
+      "question_types": [
+        "count"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 484.05999999999995,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "count_67.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_8NHmfpkxTSw_1861",
+      "official_question_id": "1861",
+      "video_id": "8NHmfpkxTSw",
+      "official_video_id": "8NHmfpkxTSw",
+      "question": "How many people have won the Nobel Prize in Chemistry?",
+      "options": [
+        "A. 4",
+        "B. 1",
+        "C. 2",
+        "D. 3"
+      ],
+      "question_types": [
+        "key information retrieval"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 5066.45,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "8NHmfpkxTSw.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_97nEBjiQI1M_0",
+      "official_question_id": "97nEBjiQI1M_0",
+      "video_id": "lvb_97nEBjiQI1M",
+      "official_video_id": "97nEBjiQI1M",
+      "question": "A news anchor with curled hair is wearing a pink blazer over a black base and sitting in front of the camera reading the news. What happened after the caption ‘standards our climate editor Justin rout’ appeared?",
+      "options": [
+        "A. The camera cuts to fish swimming around coral in the ocean.",
+        "B. The camera cuts to a woman wearing an orange floral shirt and earphones.",
+        "C. A woman wearing a red hat and white short-sleeved shirt is handing out mineral water in a crowd.",
+        "D. The camera cuts to a man speaking in front of multiple display screens.",
+        "E. The camera cuts to two farmers working in a field surrounded by green trees under a blue sky with white clouds."
+      ],
+      "question_types": [
+        "T3E"
+      ],
+      "topic": "NP-News-Programs",
+      "duration_metadata_sec": 381.28,
+      "benchmark_split": "public_validation",
+      "video_filename": "97nEBjiQI1M.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "635-3",
+      "official_question_id": "635-3",
+      "video_id": "mme_635",
+      "official_video_id": "oue5A-7Hpx4",
+      "question": "Which of the following is NOT a significant factor that cause Discover's success in the video?",
+      "options": [
+        "A. Offering premium travel rewards and airport lounge access to attract affluent customers.",
+        "B. Focusing on a \"spend-centric\" model that encourages card usage through cashback rewards.",
+        "C. Targeting middle-class consumers with no annual fees and simple rewards structures.",
+        "D. Prioritizing online business operations and 24/7 customer service."
+      ],
+      "question_types": [
+        "Information Synopsis"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "oue5A-7Hpx4.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1114",
+      "official_question_id": "Q1114",
+      "video_id": "mlvu_xiaoliyu_6",
+      "official_video_id": "xiaoliyu_6",
+      "question": "How did the cartoon jellyfish leave the mire?\n(A) Carried by the cartoon shrimp\n(B) Carried by the cartoon turtle\n(C) Carried by the cartoon catfish\n(D) Carried by the cartoon seahorse\n",
+      "options": [
+        "A. Carried by the cartoon shrimp",
+        "B. Carried by the cartoon turtle",
+        "C. Carried by the cartoon catfish",
+        "D. Carried by the cartoon seahorse"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 400.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "xiaoliyu_6.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_tH_5YbklevQ_2675",
+      "official_question_id": "2675",
+      "video_id": "tH_5YbklevQ",
+      "official_video_id": "tH_5YbklevQ",
+      "question": "What might be the most likely reason the vlogger doesn't enter the national monument on the first day?",
+      "options": [
+        "A. Because it's closed on Monday",
+        "B. Because foreigners are not allowed to enter",
+        "C. Because the author does not have enough money to buy a ticket",
+        "D. Because the author has other things to do"
+      ],
+      "question_types": [
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 3445.1,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "tH_5YbklevQ.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_sWfcgeDth_w_0",
+      "official_question_id": "sWfcgeDth_w_0",
+      "video_id": "lvb_sWfcgeDth_w",
+      "official_video_id": "sWfcgeDth_w",
+      "question": "The scene shows a lady sitting in a yellow flower field looking ahead, with a mountain peak in the distance. Yellow flowers bloom on a hillside. The lady has brown hair and is wearing a long-sleeved outfit. When 'Not the least of which, is' is mentioned, what object is not present in the scene?",
+      "options": [
+        "A. Snowy mountain",
+        "B. Green long-sleeved outfit",
+        "C. Blue sky",
+        "D. Brown long-sleeved outfit",
+        "E. Yellow flowers of yellow flower clusters"
+      ],
+      "question_types": [
+        "T2O"
+      ],
+      "topic": "LV-Lifestyle-Life-Vlogs",
+      "duration_metadata_sec": 9.0,
+      "benchmark_split": "public_validation",
+      "video_filename": "sWfcgeDth_w.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "831-3",
+      "official_question_id": "831-3",
+      "video_id": "mme_831",
+      "official_video_id": "6Pt3-NDxzRk",
+      "question": "In the video, the main character delivers food to someone on Wednesday. What is the nature of their relationship?",
+      "options": [
+        "A. They are working partners.",
+        "B. They are family members.",
+        "C. They are friends.",
+        "D. lt is unclear what their relationship is."
+      ],
+      "question_types": [
+        "Object Reasoning"
+      ],
+      "topic": "Life Record",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "6Pt3-NDxzRk.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1107",
+      "official_question_id": "Q1107",
+      "video_id": "mlvu_ego_72",
+      "official_video_id": "ego_72",
+      "question": "Where was the cat?\n(A) on the chair.\n(B) under the table\n(C) in the closet\n(D) outside the window\n",
+      "options": [
+        "A. on the chair.",
+        "B. under the table",
+        "C. in the closet",
+        "D. outside the window"
+      ],
+      "question_types": [
+        "ego"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 479.9999999999998,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "ego_72.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_wgBlACG927Y_3097",
+      "official_question_id": "3097",
+      "video_id": "wgBlACG927Y",
+      "official_video_id": "wgBlACG927Y",
+      "question": "What season do the vloggers visit the city?",
+      "options": [
+        "A. Autumn",
+        "B. Summer",
+        "C. Spring",
+        "D. Winter"
+      ],
+      "question_types": [
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2331.28,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "wgBlACG927Y.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_acAWfzV__XI_1",
+      "official_question_id": "acAWfzV__XI_1",
+      "video_id": "lvb_acAWfzV__XI",
+      "official_video_id": "acAWfzV__XI",
+      "question": "On a white screen, there are many formulas written, at the top there is blue text, below there is a black circle connected by a black arrow, and to the left there is also a blue arrow. After the subtitle \"empty queue\" appears, what happens to the blue arrow?",
+      "options": [
+        "A. Moves down",
+        "B. Disappears",
+        "C. Moves up",
+        "D. Becomes wider",
+        "E. Becomes narrower"
+      ],
+      "question_types": [
+        "T3E"
+      ],
+      "topic": "KC-Knowledge-Computer-Science",
+      "duration_metadata_sec": 1078.0,
+      "benchmark_split": "public_validation",
+      "video_filename": "acAWfzV__XI.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "853-3",
+      "official_question_id": "853-3",
+      "video_id": "mme_853",
+      "official_video_id": "pKaPg9ZJ88Q",
+      "question": "What is the role of the heroine in the dancing sequence in the second half of the video?",
+      "options": [
+        "A. The heroine is a dance teacher. She sits and watches other students dance.",
+        "B. The heroine is the lead dancer, she teaches the others dance moves.",
+        "C. The heroine is a student, she learns dance moves from the lead dancer.",
+        "D. The heroine is the audience, she watches others dance."
+      ],
+      "question_types": [
+        "Object Reasoning"
+      ],
+      "topic": "Life Record",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "pKaPg9ZJ88Q.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1342",
+      "official_question_id": "Q1342",
+      "video_id": "mlvu_en_tv_33",
+      "official_video_id": "en_tv_33",
+      "question": "What animal is the woman holding when she enters the room at the beginning of the video?\n(A) Rabbit\n(B) Dog\n(C) Pig\n(D) Cat\n",
+      "options": [
+        "A. Rabbit",
+        "B. Dog",
+        "C. Pig",
+        "D. Cat"
+      ],
+      "question_types": [
+        "plotQA"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 532.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "en_tv_33.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_jp2M1hIEtsk_3469",
+      "official_question_id": "3469",
+      "video_id": "jp2M1hIEtsk",
+      "official_video_id": "jp2M1hIEtsk",
+      "question": "Why does the vlogger take the flowers out of the bottle?",
+      "options": [
+        "A. She doesn't like these flowers any more",
+        "B. The flowers are dying",
+        "C. She wants to replace it with some new flowers",
+        "D. She wants to divide the flowers according to species"
+      ],
+      "question_types": [
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2134.45,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "jp2M1hIEtsk.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_2ekjGl8yWZk_2",
+      "official_question_id": "2ekjGl8yWZk_2",
+      "video_id": "lvb_2ekjGl8yWZk",
+      "official_video_id": "2ekjGl8yWZk",
+      "question": "On the white-background PPT, there is text in English by Liu that appears. When the blue arrow first appears above the second line of English text, what happens on the screen?",
+      "options": [
+        "A. The blue arrow moves from bottom to top.",
+        "B. The blue arrow moves from left to right.",
+        "C. The blue arrow moves from right to left.",
+        "D. The blue arrow moves from top to bottom.",
+        "E. The blue arrow enlarges."
+      ],
+      "question_types": [
+        "O2E"
+      ],
+      "topic": "KS-Knowledge-STEM",
+      "duration_metadata_sec": 1390.46,
+      "benchmark_split": "public_validation",
+      "video_filename": "2ekjGl8yWZk.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "787-1",
+      "official_question_id": "787-1",
+      "video_id": "mme_787",
+      "official_video_id": "FkrIcmXvv18",
+      "question": "What is the main plot of the video?",
+      "options": [
+        "A. The rivalry and eventual alliance between two noble houses.",
+        "B. The forbidden romance between a young man and a woman from feuding families.",
+        "C. The comedic mishaps of two young lovers from different cities.",
+        "D. The quest of a knight to win the love of a princess."
+      ],
+      "question_types": [
+        "Information Synopsis"
+      ],
+      "topic": "Artistic Performance",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "FkrIcmXvv18.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1803",
+      "official_question_id": "Q1803",
+      "video_id": "mlvu_en_tv_12",
+      "official_video_id": "en_tv_12",
+      "question": "What does the video primarily describe?\n(A) People's daily life\n(B) A global natural disaster\n(C) A group of people performing and partying at a concert\n(D) A vivid outdoor adventure\n",
+      "options": [
+        "A. People's daily life",
+        "B. A global natural disaster",
+        "C. A group of people performing and partying at a concert",
+        "D. A vivid outdoor adventure"
+      ],
+      "question_types": [
+        "topic_reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 587.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "en_tv_12.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_7HjNIPIgUg4_1834",
+      "official_question_id": "1834",
+      "video_id": "7HjNIPIgUg4",
+      "official_video_id": "7HjNIPIgUg4",
+      "question": "Who applauded for Edson Santana de Moraes when he took the stage to accept the award?",
+      "options": [
+        "A. All the guests",
+        "B. Male host",
+        "C. All of them",
+        "D. Hostess"
+      ],
+      "question_types": [
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 6654.05,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "7HjNIPIgUg4.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_2edlqFUTDVc_0",
+      "official_question_id": "2edlqFUTDVc_0",
+      "video_id": "lvb_2edlqFUTDVc",
+      "official_video_id": "2edlqFUTDVc",
+      "question": "Under the blue and white sky, in front of a short house backdrop, on the far right side stand two figures wearing olive-colored clothes and belts, one of whom is holding a scythe. Which of the figures on the grass in the bottom left corner is simultaneously opening a scroll?",
+      "options": [
+        "A. Two small figures wearing black helmets",
+        "B. Two small figures wearing white helmets",
+        "C. Two small figures wearing green helmets",
+        "D. Two small figures wearing black helmets",
+        "E. Two small figures wearing yellow helmets"
+      ],
+      "question_types": [
+        "E2O"
+      ],
+      "topic": "KH-Knowledge-History",
+      "duration_metadata_sec": 355.27,
+      "benchmark_split": "public_validation",
+      "video_filename": "2edlqFUTDVc.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "630-3",
+      "official_question_id": "630-3",
+      "video_id": "mme_630",
+      "official_video_id": "BjmPvovl-V4",
+      "question": "What is Kemle's attitude towards the explanation of consciousness by the experts?",
+      "options": [
+        "A. He agrees with the neuroscientist.",
+        "B. He agrees with the spiritual leader.",
+        "C. He agrees with the entrepreneur.",
+        "D. Cannot be inferred."
+      ],
+      "question_types": [
+        "Object Reasoning"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "BjmPvovl-V4.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1855",
+      "official_question_id": "Q1855",
+      "video_id": "mlvu_ego_14",
+      "official_video_id": "ego_14",
+      "question": "Where is the person in the video?\n(A) Basement\n(B) Bathroom\n(C) Bedroom\n(D) Kitchen\n",
+      "options": [
+        "A. Basement",
+        "B. Bathroom",
+        "C. Bedroom",
+        "D. Kitchen"
+      ],
+      "question_types": [
+        "topic_reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 480.07,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "ego_14.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_pXD3txG2bVQ_728",
+      "official_question_id": "728",
+      "video_id": "pXD3txG2bVQ",
+      "official_video_id": "pXD3txG2bVQ",
+      "question": "Who do the boy and the cat meet on the way they first leave home?",
+      "options": [
+        "A. The old man",
+        "B. The couple",
+        "C. The rabbit",
+        "D. The dog"
+      ],
+      "question_types": [
+        "event understanding"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 3205.33,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "pXD3txG2bVQ.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_9dSkvxS2EB0_2",
+      "official_question_id": "9dSkvxS2EB0_2",
+      "video_id": "lvb_9dSkvxS2EB0",
+      "official_video_id": "9dSkvxS2EB0",
+      "question": "In the screen with white background and text, the right side is blank, the upper left section contains a circuit diagram, and the text information is located in both the middle left and bottom left sections. When the text information in the middle left and bottom left sections almost disappears, what change occurs to the circuit diagram in the upper left section?",
+      "options": [
+        "A. Shrinks",
+        "B. Covered by a yellow overlay",
+        "C. Enlarges",
+        "D. Covered by a blue overlay",
+        "E. Disappears"
+      ],
+      "question_types": [
+        "SAA"
+      ],
+      "topic": "KC-Knowledge-Computer-Science",
+      "duration_metadata_sec": 2439.97,
+      "benchmark_split": "public_validation",
+      "video_filename": "9dSkvxS2EB0.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "802-2",
+      "official_question_id": "802-2",
+      "video_id": "mme_802",
+      "official_video_id": "TYmHe20p_zU",
+      "question": "Why do the five members of the Feb 5 team want to help William Holmes change?",
+      "options": [
+        "A. They hope that William Holmes can become better and reunite with his girlfriend.",
+        "B. They want to help William Holmes and become friends with him.",
+        "C. They are enthusiastic about teaching their skills to others to gain a sense of achievement.",
+        "D. They hope William Holmes achieves a work-life balance."
+      ],
+      "question_types": [
+        "Action Reasoning"
+      ],
+      "topic": "Artistic Performance",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "TYmHe20p_zU.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q904",
+      "official_question_id": "Q904",
+      "video_id": "mlvu_ego_16",
+      "official_video_id": "ego_16",
+      "question": "In what room did I see the black suitcase?\n(A) In the kitchen on the counter\n(B) In the bathroom on the sink\n(C) In the living room on the couch\n(D) In the bedroom on the bed\n",
+      "options": [
+        "A. In the kitchen on the counter",
+        "B. In the bathroom on the sink",
+        "C. In the living room on the couch",
+        "D. In the bedroom on the bed"
+      ],
+      "question_types": [
+        "ego"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 480.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "ego_16.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_Z4HGQL_McDQ_1118",
+      "official_question_id": "1118",
+      "video_id": "Z4HGQL_McDQ",
+      "official_video_id": "Z4HGQL_McDQ",
+      "question": "What is the item placed on the shelf after cleaning?",
+      "options": [
+        "A. Adhesive tape",
+        "B. Molds",
+        "C. Boxs",
+        "D. Tires"
+      ],
+      "question_types": [
+        "event understanding",
+        "reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2959.85,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "Z4HGQL_McDQ.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_HWyDOQrYtCk_0",
+      "official_question_id": "HWyDOQrYtCk_0",
+      "video_id": "lvb_HWyDOQrYtCk",
+      "official_video_id": "HWyDOQrYtCk",
+      "question": "On the yellow table, there is a white bowl with instant noodles inside and a pair of chopsticks placed in the bowl. There is also a dark green bowl with vegetables and a blue plate with a fried egg. What items appeared after the word 'Music' was mentioned?",
+      "options": [
+        "A. Fried egg",
+        "B. Instant noodles",
+        "C. Tablet, Milk Tea",
+        "D. Vegetables"
+      ],
+      "question_types": [
+        "T3O"
+      ],
+      "topic": "LV-Lifestyle-Life-Vlogs",
+      "duration_metadata_sec": 39.0,
+      "benchmark_split": "public_validation",
+      "video_filename": "HWyDOQrYtCk.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "745-1",
+      "official_question_id": "745-1",
+      "video_id": "mme_745",
+      "official_video_id": "mRgstQ4X5d4",
+      "question": "What does Cameron achieve in his debut practice game in Las Vegas?",
+      "options": [
+        "A. Breaking the three-point record.",
+        "B. Hit the shutout ball.",
+        "C. Pull down a lot of rebounds.",
+        "D. Giving away a fatal cap to the opponent."
+      ],
+      "question_types": [
+        "Action Recognition"
+      ],
+      "topic": "Sports Competition",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "mRgstQ4X5d4.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1095",
+      "official_question_id": "Q1095",
+      "video_id": "mlvu_ego_5",
+      "official_video_id": "ego_5",
+      "question": "Did I pick up the paper plate bundle?\n(A) I lost it.\n(B) I don't remember.\n(C) No.\n(D) Yes.\n",
+      "options": [
+        "A. I lost it.",
+        "B. I don't remember.",
+        "C. No.",
+        "D. Yes."
+      ],
+      "question_types": [
+        "ego"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 480.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "ego_5.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_20lTg3yUrO4_5168",
+      "official_question_id": "5168",
+      "video_id": "20lTg3yUrO4",
+      "official_video_id": "20lTg3yUrO4",
+      "question": "Who is the man wearing a black hat with \"2024\" on it during the APC Primary Election?",
+      "options": [
+        "A. Abiola Oladapo",
+        "B. Sanwo-Olu",
+        "C. Jimh Ibrahim",
+        "D. Peter Odili"
+      ],
+      "question_types": [
+        "key information retrieval",
+        "entity recognition"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 3675.02,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "20lTg3yUrO4.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_JLBsG65WoVU_1",
+      "official_question_id": "JLBsG65WoVU_1",
+      "video_id": "lvb_JLBsG65WoVU",
+      "official_video_id": "JLBsG65WoVU",
+      "question": "There is a row of neatly arranged green fields on the screen, with differently sized houses with gray roofs on top. Which object appears on the screen below?",
+      "options": [
+        "A. green tree",
+        "B. yellow tree",
+        "C. white clouds",
+        "D. yellow sun"
+      ],
+      "question_types": [
+        "S2O"
+      ],
+      "topic": "KG-Knowledge-Geography",
+      "duration_metadata_sec": 1004.41,
+      "benchmark_split": "public_validation",
+      "video_filename": "JLBsG65WoVU.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "611-3",
+      "official_question_id": "611-3",
+      "video_id": "mme_611",
+      "official_video_id": "H8fGd3fCJbg",
+      "question": "What is true about Bernini's David as described in the video?",
+      "options": [
+        "A. David opened his mouth slightly to breathe better.",
+        "B. David tried to kill the youth Acis in the statue.",
+        "C. Bernini's David portrayed the biblical hero in contemplation.",
+        "D. The contrast between the two famous \"David\" showed the move from Renaissance to Baroque."
+      ],
+      "question_types": [
+        "Object Reasoning"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "H8fGd3fCJbg.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q1730",
+      "official_question_id": "Q1730",
+      "video_id": "mlvu_206",
+      "official_video_id": "206",
+      "question": "What type of video is this?\n(A) Science Fiction\n(B) Comedy\n(C) Animal\n(D) Action\n",
+      "options": [
+        "A. Science Fiction",
+        "B. Comedy",
+        "C. Animal",
+        "D. Action"
+      ],
+      "question_types": [
+        "topic_reasoning"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 480.0,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "206.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_20lTg3yUrO4_5161",
+      "official_question_id": "5161",
+      "video_id": "20lTg3yUrO4",
+      "official_video_id": "20lTg3yUrO4",
+      "question": "Where does the fire disaster happen?",
+      "options": [
+        "A. Dosumu",
+        "B. Lagos Nigeria",
+        "C. Emohua",
+        "D. Abuja"
+      ],
+      "question_types": [
+        "event understanding"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 3675.02,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "20lTg3yUrO4.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_jJGbXCCU5yc_0",
+      "official_question_id": "jJGbXCCU5yc_0",
+      "video_id": "lvb_jJGbXCCU5yc",
+      "official_video_id": "jJGbXCCU5yc",
+      "question": "In the Google logo, there is a white box below it, and text continuously appears in it. What is the complete text that appears in the white box?",
+      "options": [
+        "A. lucky",
+        "B. google flights",
+        "C. google flight",
+        "D. google search",
+        "E. search"
+      ],
+      "question_types": [
+        "E2O"
+      ],
+      "topic": "LT-Lifestyle-Travel-Guides",
+      "duration_metadata_sec": 404.73,
+      "benchmark_split": "public_validation",
+      "video_filename": "jJGbXCCU5yc.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "611-1",
+      "official_question_id": "611-1",
+      "video_id": "mme_611",
+      "official_video_id": "H8fGd3fCJbg",
+      "question": "Based on the video, what is not true about the artwork \"Apollo and Daphne\"?",
+      "options": [
+        "A. Apollo didn't touch Daphne's skin physically.",
+        "B. Apollo tried to grab Daphne.",
+        "C. Apollo had curly hair in the sculpture.",
+        "D. Daphne's fingertips took root."
+      ],
+      "question_types": [
+        "Action Recognition"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "H8fGd3fCJbg.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q589",
+      "official_question_id": "Q589",
+      "video_id": "mlvu_count_102",
+      "official_video_id": "count_102",
+      "question": "Throughout this video, what is the total count of occurrences for the scene featuring the 'carving pumpkin' action\n(A) 2\n(B) 4\n(C) 0\n(D) 6\n",
+      "options": [
+        "A. 2",
+        "B. 4",
+        "C. 0",
+        "D. 6"
+      ],
+      "question_types": [
+        "count"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 1395.69,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "count_102.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_81SbCR6p3Z0_543",
+      "official_question_id": "543",
+      "video_id": "81SbCR6p3Z0",
+      "official_video_id": "81SbCR6p3Z0",
+      "question": "What is the relationship between two people on the screen from 27:20-27:25?",
+      "options": [
+        "A. A romantic relationship",
+        "B. Good friend",
+        "C. Father daughter relationship",
+        "D. Siblings"
+      ],
+      "question_types": [
+        "event understanding",
+        "temporal grounding"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 4121.22,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "81SbCR6p3Z0.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_tdm72-vYxTs_0",
+      "official_question_id": "tdm72-vYxTs_0",
+      "video_id": "lvb_tdm72-vYxTs",
+      "official_video_id": "tdm72-vYxTs",
+      "question": "On the screen, there is a beige stool with a green bowl on top. The bowl contains yellow food, and there is a silver spoon inside the bowl. What happens after the spoon is placed in the bowl?",
+      "options": [
+        "A. The spoon stirs around in the bowl",
+        "B. The spoon scoops up the food",
+        "C. New food is added to the green bowl",
+        "D. The green bowl is carried away",
+        "E. The spoon hits the green bowl"
+      ],
+      "question_types": [
+        "S2E"
+      ],
+      "topic": "LC-Lifestyle-Cooking-Recipes",
+      "duration_metadata_sec": 1163.97,
+      "benchmark_split": "public_validation",
+      "video_filename": "tdm72-vYxTs.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "632-3",
+      "official_question_id": "632-3",
+      "video_id": "mme_632",
+      "official_video_id": "FQd5bo9nIZs",
+      "question": "Which of the following sections most closely relates to the theme of the video?",
+      "options": [
+        "A. Intermission.",
+        "B. The money problme.",
+        "C. #deletefacebook.",
+        "D. Present day and future."
+      ],
+      "question_types": [
+        "Object Reasoning"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "FQd5bo9nIZs.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q181",
+      "official_question_id": "Q181",
+      "video_id": "mlvu_needle_22",
+      "official_video_id": "needle_22",
+      "question": "What color is the pumpkin that the chef is using to prepare the soup?\n(A) Yellow\n(B) Orange\n(C) White\n(D) Green\n",
+      "options": [
+        "A. Yellow",
+        "B. Orange",
+        "C. White",
+        "D. Green"
+      ],
+      "question_types": [
+        "needle"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 884.64,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "needle_22.mp4"
+    },
+    {
+      "dataset": "LVBench",
+      "question_id": "lvbench_JlrzSvCsIjE_4005",
+      "official_question_id": "4005",
+      "video_id": "JlrzSvCsIjE",
+      "official_video_id": "JlrzSvCsIjE",
+      "question": "Summarize the scoring in the second game of the first set?",
+      "options": [
+        "A. The American team scores one point first, and the Swiss team then tie it, but then the American team score consecutively to win the game",
+        "B. The Swiss team score consecutively to win the game with American get no point",
+        "C. The American team score consecutively to win the game with Swiss get no point",
+        "D. The Swiss team scores one point first, and the American team then tie it, but then the Swiss team score consecutively to win the game"
+      ],
+      "question_types": [
+        "summarization"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 2791.62,
+      "benchmark_split": "standard_public_1549",
+      "video_filename": "JlrzSvCsIjE.mp4"
+    },
+    {
+      "dataset": "LongVideoBench",
+      "question_id": "lvb_22iOyzE8Ec0_0",
+      "official_question_id": "22iOyzE8Ec0_0",
+      "video_id": "lvb_22iOyzE8Ec0",
+      "official_video_id": "22iOyzE8Ec0",
+      "question": "In front of a purple background, there is a man with long black hair standing. He has his hands clenched into fists in front of him. In the top left corner of the screen, there are bold white and blue captions. What did he do after this?",
+      "options": [
+        "A. He styled his hair facing the mirror",
+        "B. He made a victory gesture",
+        "C. He touched his beard",
+        "D. He closed his eyes and clasped his hands in front of him"
+      ],
+      "question_types": [
+        "E3E"
+      ],
+      "topic": "KS-Knowledge-STEM",
+      "duration_metadata_sec": 231.86,
+      "benchmark_split": "public_validation",
+      "video_filename": "22iOyzE8Ec0.mp4"
+    },
+    {
+      "dataset": "Video-MME",
+      "question_id": "675-2",
+      "official_question_id": "675-2",
+      "video_id": "mme_675",
+      "official_video_id": "lVeNTofDB2k",
+      "question": "In which order are the following types of coffee made in this video?\n(a) Espresso, Manual.\n(b) Piccolo Latte.\n(c) Dirty Chai.\n(d) Vienna Coffee.",
+      "options": [
+        "A. (b)(d)(c)(a).",
+        "B. (b)(d)(a)(c).",
+        "C. (a)(b)(c)(d).",
+        "D. (d)(c)(a)(b)."
+      ],
+      "question_types": [
+        "Temporal Reasoning"
+      ],
+      "topic": "Knowledge",
+      "duration_metadata_sec": null,
+      "benchmark_split": "long",
+      "video_filename": "lVeNTofDB2k.mp4"
+    },
+    {
+      "dataset": "MLVU",
+      "question_id": "mlvu_Q698",
+      "official_question_id": "Q698",
+      "video_id": "mlvu_count_143",
+      "official_video_id": "count_143",
+      "question": "Throughout this video, what is the total count of occurrences for the scene featuring the 'javelin throw' action\n(A) 2\n(B) 6\n(C) 3\n(D) 4\n",
+      "options": [
+        "A. 2",
+        "B. 6",
+        "C. 3",
+        "D. 4"
+      ],
+      "question_types": [
+        "count"
+      ],
+      "topic": null,
+      "duration_metadata_sec": 469.07,
+      "benchmark_split": "public_dev_mirror_parquet_split_test",
+      "video_filename": "count_143.mp4"
+    }
+  ]
+}

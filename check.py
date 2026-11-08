@@ -50,6 +50,22 @@ def source_and_roster():
     assert Counter(r["dataset"] for r in pava.select(rows, 5)) == {d:5 for d in DATASETS}
     assert pava.select(rows) == rows
     assert roster["seed"] == 42
+    pilot = read(ROOT / "data/roster80.json")
+    assert pilot["samples"] == pava.select(roster["samples"], 20)
+    import download_videos
+    selected, question_count = download_videos.selected_rows(ROOT / "data/roster80.json")
+    assert question_count == 80 and len(selected) == len({(r["dataset"], r["video_id"]) for r in pilot["samples"]})
+    assert download_videos.selected_rows()[1] == 597
+    assert len(download_videos.selected_rows()[0]) == 465
+    with tempfile.TemporaryDirectory() as temp:
+        folder = Path(temp)
+        with patch.object(download_videos, "complete", return_value=True), contextlib.redirect_stdout(io.StringIO()):
+            download_videos.run(folder, selected, question_count)
+        manifest = read(folder / "video_manifest.json")
+        assert manifest["question_count"] == 80 and manifest["video_count"] == 75
+        assert len(manifest["files"]) == 75
+        save(folder / "bad.json", dict(samples=[dict(question_id="bad",dataset="MLVU",video_filename="not_in_plan.mp4")]))
+        expect(download_videos.DownloadError, lambda: download_videos.selected_rows(folder / "bad.json"))
     forbidden = {"answer", "label", "correct_option", "ground_truth"}
     assert all(not forbidden.intersection(r) for r in rows)
     expect(ValueError, lambda: pava.select(rows, 181))

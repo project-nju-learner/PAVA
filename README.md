@@ -2,7 +2,9 @@
 
 用于长视频问答的持久化局部检索实现：global reasoning 生成检索目标，local retrieval process 在自己的执行上下文中持续获取、审查信息，结束后向上层传递观察及来源。
 
-本仓库提供独立部署的主方法、固定 597 题题单、视频下载器、预处理、运行和开销汇总。接手的 AI 先读 [AGENTS.md](AGENTS.md)。
+本仓库提供独立部署的主方法、80 题试跑与 597 题完整题单、视频下载器、预处理、运行和开销汇总。**当前先跑 80 题；597 题只做好准备，是否运行由用户后续决定。** 接手的 AI 先读 [AGENTS.md](AGENTS.md)。
+
+两套范围共用同一份代码与配置：80 题是 597 题内每个数据集的前 20 题，共 75 个独立视频；完整范围是 597 题、465 个独立视频。扩大范围时可复用同一工作目录的媒体材料，但新运行不复用旧模型答案。
 
 ## 当前版本
 
@@ -56,7 +58,7 @@ vllm serve /models/Qwen3.8-27B --served-model-name qwen3.8-27b --host 127.0.0.1 
 
 ## 2. 视频与题单
 
-固定题单在 `data/roster597.json`，采样 seed 为 42；含题干、官方选项和 ID，不含答案标签。运行顺序是按下列四个数据集交错，各数据集内部保持原题单顺序，较长的数据集不会被截断。
+完整题单在 `data/roster597.json`，采样 seed 为 42；试跑名单在 `data/roster80.json`，从完整题单按每集前 20 题固定抽取，没有重新随机采样。二者只含题干、官方选项和 ID，不含答案标签。运行顺序按下列四个数据集交错，各数据集内部保持原顺序，较长的数据集不会被截断。
 
 | 数据集 | 题数 | 独立视频数 |
 |---|---:|---:|
@@ -67,21 +69,21 @@ vllm serve /models/Qwen3.8-27B --served-model-name qwen3.8-27b --host 127.0.0.1 
 | 合计 | 597 | 465 |
 
 ```bash
-python download_videos.py --plan
-python download_videos.py /data/rebuttal597
+python download_videos.py --roster data/roster80.json --plan
+python download_videos.py /data/rebuttal597 --roster data/roster80.json
 ```
 
-下载器内置全部 465 个视频的公开源位置，支持分卷续传和筛选解压；按完整分卷下载约需 600 GB 流量，建议至少 250 GB 可用空间。公开视频合计约 115.1 GB。LongVideoBench 需要下载者自己的 Hugging Face 账户获得数据集访问权。脚本不指定网络加速方式。
+上面只保存 80 题所需的 75 个视频。下载器内置全部 465 个视频的公开源位置，支持分卷续传和筛选解压；完整 597 题按分卷下载约需 600 GB 流量，建议至少 250 GB 可用空间。**80 题仍需下载所涉及的完整归档，流量不会按题数等比例减少。** 归档解压后会自动删除；以后扩展题单可能重新下载部分分卷。LongVideoBench 需要下载者自己的 Hugging Face 账户获得数据集访问权。脚本不指定网络加速方式。
 
 输出路径为 `/data/rebuttal597/<dataset>/videos/<official_filename>`，与预处理入口一致。公开源视频与旧机器的少数转码文件可能不同，必须重新生成帧和索引，不能套用旧缓存。
 
 ## 3. 预处理
 
-推荐先准备每集 5 题，共 20 题。下列命令生成新的本地 ASR、1 fps OpenCLIP 索引和初始帧；不调用远程语言模型：
+当前先准备每集 20 题，共 80 题。下列命令生成新的本地 ASR、1 fps OpenCLIP 索引和初始帧；不调用远程语言模型。默认父题单仍是 `roster597.json`，`--per-dataset 20` 与冻结的 `roster80.json` 完全对应，便于后续原目录扩展：
 
 ```bash
 pip install faster-whisper
-python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda --per-dataset 5
+python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda --per-dataset 20
 ```
 
 已有字幕可将 `--asr-model ... --asr-device ...` 替换为 `--transcripts-dir /data/transcripts`。每个文件命名为 `<video_id>.json`，格式为：
@@ -94,13 +96,13 @@ python -B pava.py prepare --config config.local.json --video-root /data/rebuttal
 
 本入口生成的 ASR 是 `faster-whisper`，不自动等同于旧实验的 WhisperX/官方字幕；正式比较应保持转写材料一致，并报告实际来源。生成字幕的耗时计入预处理；导入字幕的历史生成成本未知。
 
-同一工作目录重跑准备命令会复用绑定一致的材料；去掉 `--per-dataset 5` 可扩展到完整 597 题。更换帧数、模型权重、字幕来源或工作路径时使用新目录。
+同一工作目录重跑准备命令会复用绑定一致的材料；后续获准后去掉 `--per-dataset 20` 可扩展到完整 597 题。更换帧数、模型权重、字幕来源或工作路径时使用新目录。
 
 ## 4. 任务顺序与运行
 
 1. 完成 `check.py` 和数据准备，先跑每集 1 题，共 4 题，确认服务接受图片、输出格式正确、usage 可用。
-2. 每集 5 题，共 20 题，`--concurrency 1` 测单题速度与开销。
-3. 检查结果后准备完整题单，明确授权后运行 597 题；批量可用 4 并发。
+2. 第一版跑 **80 题，每集 20 题**，记录准确率与完整开销。若要单独测不含并发排队的速度，可先用每集 5 题、共 20 题串行测速。
+3. 80 题结果核对后，由用户决定是否运行第二版 **597 题**；不要自动扩跑。
 
 这些前缀样本来自本仓库的 597 题题单，**不是历史 80 题试跑名单**。本仓库不包含旧成绩。
 
@@ -110,8 +112,18 @@ python -B pava.py prepare --config config.local.json --video-root /data/rebuttal
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 1 --concurrency 1
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 1 --concurrency 1 --run-id smoke4 --execute
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 5 --concurrency 1 --run-id speed20 --execute
+tmux new-session -d -s pava80 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 20 --concurrency 4 --run-id pilot80 --execute > /data/pava128/pilot80.log 2>&1'
+```
+
+第二版 597 题的命令已备好，**只在用户决定扩跑后执行**：
+
+```bash
+python download_videos.py /data/rebuttal597 --roster data/roster597.json
+python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda
 tmux new-session -d -s pava597 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --concurrency 4 --run-id main597 --execute > /data/pava128/main597.log 2>&1'
 ```
+
+两套配置和统计方式保持一致，run 目录分别为 `pilot80` / `main597`。80 题多次被运行时，每批开销分别保留；不要把先前试跑成本漏记。客户端并发与服务端 `max-num-seqs` 都要记录；串行服务遇到 4 个客户端请求会排队，不能把这类时延写成独占测速。
 
 在仓库根目录启动 tmux 命令；新会话必须继承或重新加载自己的认证环境。输入是题干、选项、字幕和抽取帧，GT 不进入推理。只复用媒体预处理材料，每次 run 使用新的理解/观察/答案缓存。已有 run-id 不允许覆盖。401/402/403/429/5xx 会停止新增请求和派发；无自动服务重试。当前入口没有断点续跑命令，不要把新 run 冒充旧 run 的无成本续接。
 
@@ -121,6 +133,7 @@ tmux new-session -d -s pava597 'source .venv/bin/activate && python -u -B pava.p
 
 ```bash
 python -B report.py /data/pava128/runs/speed20
+python -B report.py /data/pava128/runs/pilot80 --labels /data/evaluation/answers.json
 python -B report.py /data/pava128/runs/main597 --labels /data/evaluation/answers.json
 ```
 
