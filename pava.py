@@ -30,8 +30,10 @@ def configure(path):
         raise ValueError("Credentials belong in the environment, not config JSON")
     if cfg["input_format"] not in ("openai_images", "dashscope_video"):
         raise ValueError("input_format must be openai_images or dashscope_video")
-    if not 4 <= cfg["initial_frames"] <= 250 or not 1 <= cfg["qa_concurrency"] <= 4:
-        raise ValueError("initial_frames must be 4..250; concurrency must be 1..4")
+    if not 4 <= cfg["initial_frames"] <= 250:
+        raise ValueError("initial_frames must be 4..250")
+    if type(cfg["qa_concurrency"]) is not int or cfg["qa_concurrency"] < 1:
+        raise ValueError("qa_concurrency must be a positive integer")
     if cfg.get("automatic_service_retries", 0) != 0:
         raise ValueError("Automatic model-service retries are disabled")
     for key in ("max_rounds", "max_requests_per_question", "max_images_per_question", "question_timeout_seconds", "default_max_output_tokens"):
@@ -295,8 +297,8 @@ def run_batch(args):
             raise ValueError("Video changed after preparation: " + row["video_id"])
         validate_materials(record, work)
     if args.concurrency is not None:
-        if not 1 <= args.concurrency <= 4:
-            raise ValueError("concurrency must be 1..4")
+        if type(args.concurrency) is not int or args.concurrency < 1:
+            raise ValueError("concurrency must be a positive integer")
         cfg["qa_concurrency"] = args.concurrency
     print(json.dumps(dict(questions=len(rows), counts=dict(Counter(r["dataset"] for r in rows)), model=cfg["model"],
         endpoint=cfg["base_url"], initial_frames=cfg["initial_frames"], concurrency=cfg["qa_concurrency"],

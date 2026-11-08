@@ -49,7 +49,7 @@ vllm serve /models/Qwen3.8-27B --served-model-name qwen3.8-27b --host 127.0.0.1 
 | `input_format` | 本地 vLLM 用 `openai_images`；接受原 video 帧列表的接口用 `dashscope_video` |
 | `initial_frames` | 128 或 250；改变后使用新的预处理工作目录 |
 | `stream` | 支持 SSE 时启用，记录首 token 时延和近似解码速度 |
-| `qa_concurrency` | 1 用于串行测速；批量可设 4，单题内部 HTTP 串行 |
+| `qa_concurrency` | 正整数，由部署者按机器和服务容量自行配置；1 用于串行测速，单题内部 HTTP 串行 |
 | `max_rounds`, `max_repairs` | 原执行配置 8 / 7 |
 | `max_requests_per_question`, `max_images_per_question` | 每题保护上限 80 / 8000；不是实际开销 |
 | `default_max_output_tokens` | 未显式指定输出上限的阶段补设 8192；原显式上限保留 |
@@ -106,13 +106,13 @@ python -B pava.py prepare --config config.local.json --video-root /data/rebuttal
 
 这些前缀样本来自本仓库的 597 题题单，**不是历史 80 题试跑名单**。本仓库不包含旧成绩。
 
-默认只检查材料并打印计划；只有 `--execute` 才发出模型请求：
+默认只检查材料并打印计划；只有 `--execute` 才发出模型请求。批量运行使用 `config.local.json` 中自行设置的 `qa_concurrency`，也可用 `--concurrency` 覆盖：
 
 ```bash
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 1 --concurrency 1
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 1 --concurrency 1 --run-id smoke4 --execute
 python -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 5 --concurrency 1 --run-id speed20 --execute
-tmux new-session -d -s pava80 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 20 --concurrency 4 --run-id pilot80 --execute > /data/pava128/pilot80.log 2>&1'
+tmux new-session -d -s pava80 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 20 --run-id pilot80 --execute > /data/pava128/pilot80.log 2>&1'
 ```
 
 第二版 597 题的命令已备好，**只在用户决定扩跑后执行**：
@@ -120,10 +120,10 @@ tmux new-session -d -s pava80 'source .venv/bin/activate && python -u -B pava.py
 ```bash
 python download_videos.py /data/rebuttal597 --roster data/roster597.json
 python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda
-tmux new-session -d -s pava597 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --concurrency 4 --run-id main597 --execute > /data/pava128/main597.log 2>&1'
+tmux new-session -d -s pava597 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --run-id main597 --execute > /data/pava128/main597.log 2>&1'
 ```
 
-两套配置和统计方式保持一致，run 目录分别为 `pilot80` / `main597`。80 题多次被运行时，每批开销分别保留；不要把先前试跑成本漏记。客户端并发与服务端 `max-num-seqs` 都要记录；串行服务遇到 4 个客户端请求会排队，不能把这类时延写成独占测速。
+两套配置和统计方式保持一致，run 目录分别为 `pilot80` / `main597`。80 题多次被运行时，每批开销分别保留；不要把先前试跑成本漏记。客户端并发与服务端 `max-num-seqs` 都要记录；存在并发排队时，不能把这类时延写成独占测速。
 
 在仓库根目录启动 tmux 命令；新会话必须继承或重新加载自己的认证环境。输入是题干、选项、字幕和抽取帧，GT 不进入推理。只复用媒体预处理材料，每次 run 使用新的理解/观察/答案缓存。已有 run-id 不允许覆盖。401/402/403/429/5xx 会停止新增请求和派发；无自动服务重试。当前入口没有断点续跑命令，不要把新 run 冒充旧 run 的无成本续接。
 

@@ -227,22 +227,26 @@ item = dict(question_id=qid, dataset=row['dataset'], video_id=row['video_id'], r
         rows = [dict(question_id=f"q{i}", video_id="v", dataset=d) for i,d in enumerate(DATASETS*2)]
         save(root / "inputs.json", rows)
         cfg = read(ROOT / "config.example.json")
-        save(root / "config.json", cfg)
-        for name in ("ok", "stop"):
-            args = SimpleNamespace(config=root / "config.json", work=root, per_dataset=None, concurrency=4, execute=True, run_id=name)
+        for invalid in (0, -1, 1.5, True):
+            save(root / "config.json", {**cfg, "qa_concurrency":invalid})
+            expect(ValueError, lambda: pava.configure(root / "config.json"))
+        slots = 6
+        for name, override in (("configured", None), ("override", slots), ("stop", slots)):
+            save(root / "config.json", {**cfg, "qa_concurrency":slots if override is None else 1})
+            args = SimpleNamespace(config=root / "config.json", work=root, per_dataset=None, concurrency=override, execute=True, run_id=name)
             with patch.object(pava, "ROOT", root), patch.object(pava, "validate_materials"), patch.dict(os.environ, {"PAVA_MODEL":cfg["model"], "OPENAI_BASE_URL":cfg["base_url"]}), contextlib.redirect_stdout(io.StringIO()):
                 pava.run_batch(args)
             items = read(root / "runs" / name / "results.json")
-            if name == "ok":
+            if name != "stop":
                 assert len(items) == 8
                 events = sorted([(r["fixture_start"], 1) for r in items] + [(r["fixture_end"], -1) for r in items])
                 active = peak = 0
                 for _, delta in events:
                     active += delta
                     peak = max(peak, active)
-                assert peak == 4
+                assert peak == slots
             else:
-                assert 1 <= len(items) <= 4 and read(root / "runs/stop/finished.json")["phase"] == "stopped"
+                assert 1 <= len(items) <= slots and read(root / "runs/stop/finished.json")["phase"] == "stopped"
 
 
 if __name__ == "__main__":
