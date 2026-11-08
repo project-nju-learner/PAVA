@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""冻结 597 题所需的 465 个视频：公开源下载（Ubuntu，Python 3.9+，无 pip 依赖）。
+"""可选的冻结题单视频下载器（Ubuntu，Python 3.9+，无 pip 依赖）。
+
+下载渠道由部署者自行选择；已有视频或其他渠道可直接按 README 的目录接入，
+不必运行本文件。当前先准备 80 题所需的 75 个视频，官方视频编号与文件名在
+data/video_ids80.txt。本脚本按分卷下载、按名单提取，不是完整数据集下载器。
 
 465 个视频名单已经内置，不需要原服务器权限。
 80题试跑（一行）：python3 download_videos.py /data/rebuttal597 --roster data/roster80.json

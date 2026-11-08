@@ -2,7 +2,7 @@
 
 用于长视频问答的持久化局部检索实现：global reasoning 生成检索目标，local retrieval process 在自己的执行上下文中持续获取、审查信息，结束后向上层传递观察及来源。
 
-本仓库提供独立部署的主方法、80 题试跑与 597 题完整题单、视频下载器、预处理、运行和开销汇总。**当前先跑 80 题；597 题只做好准备，是否运行由用户后续决定。** 接手的 AI 先读 [AGENTS.md](AGENTS.md)。
+本仓库提供独立部署的主方法、80 题试跑与 597 题冻结题单、视频编号清单、可选下载工具、预处理、运行和开销汇总。**当前先准备 80 题对应的视频并试跑；597 题只做好准备，是否运行由用户后续决定。** 接手的 AI 先读 [AGENTS.md](AGENTS.md)。
 
 两套范围共用同一份代码与配置：80 题是 597 题内每个数据集的前 20 题，共 75 个独立视频；完整范围是 597 题、465 个独立视频。扩大范围时可复用同一工作目录的媒体材料，但新运行不复用旧模型答案。
 
@@ -58,24 +58,45 @@ vllm serve /models/Qwen3.8-27B --served-model-name qwen3.8-27b --host 127.0.0.1 
 
 ## 2. 视频与题单
 
-完整题单在 `data/roster597.json`，采样 seed 为 42；试跑名单在 `data/roster80.json`，从完整题单按每集前 20 题固定抽取，没有重新随机采样。二者只含题干、官方选项和 ID，不含答案标签。运行顺序按下列四个数据集交错，各数据集内部保持原顺序，较长的数据集不会被截断。
+**先备齐 80 题子集对应的 75 个视频，不要求先下载完整数据集。下载渠道、工具和加速方式由部署者自行选择；已有匹配视频可直接复用，不必运行本仓库的下载器。**
 
-| 数据集 | 题数 | 独立视频数 |
-|---|---:|---:|
-| LVBench | 180 | 87 |
-| LongVideoBench | 150 | 136 |
-| Video-MME Long | 140 | 121 |
-| MLVU | 127 | 121 |
-| 合计 | 597 | 465 |
+视频编号见 [data/video_ids80.txt](data/video_ids80.txt)：每行一个视频，三列依次为数据集、**官方视频 ID**、程序读取的文件名，按数据集去重。题目与视频的完整对应关系在 [data/roster80.json](data/roster80.json)。这些是视频编号，不是压缩分包编号或题目编号；不要把项目内部的 `video_id` 前缀当作官方下载 ID。部分 LongVideoBench 视频的官方 ID 与文件名并非简单加 `.mp4` 的关系，请以清单第三列为准。
+
+| 数据集及当前评测范围 | 试跑题数 | 所需视频数 | 参考来源（可自行选择其他匹配来源） |
+|---|---:|---:|---|
+| LVBench | 20 | 16 | [公开数据](https://huggingface.co/datasets/lmms-eval/LVBench) |
+| LongVideoBench validation | 20 | 20 | [官方数据](https://huggingface.co/datasets/longvideobench/LongVideoBench) |
+| Video-MME Long | 20 | 19 | [公开数据](https://huggingface.co/datasets/lmms-eval/Video-MME) |
+| MLVU Dev 七类选择题 | 20 | 20 | [选择题数据源](https://huggingface.co/datasets/sy1998/MLVU_dev)、[官方开发集](https://huggingface.co/datasets/MLVU/MVLU) |
+| 合计 | 80 | 75 | |
+
+MLVU 只需当前开发集选择题视频，不要求开放式生成任务或独立 MLVU Test。参考镜像里的 parquet split 虽名为 `test`，内容对应 MLVU Dev，不能据此换成独立测试集。使用需要登录的参考来源时，由下载者用自己的账号取得访问权；这不限定必须使用该渠道。
+
+冻结父题单在 `data/roster597.json`，采样 seed 为 42，分集题数为 LVBench 180 / LongVideoBench 150 / Video-MME Long 140 / MLVU 127，共 465 个视频。80 题是其中每集前 20 题，没有重新随机采样。题单只含题干、官方选项和 ID，不含答案标签；按四数据集交错运行，各数据集内部保持原顺序。**下载更多视频不代表扩大当前实验题数。**
+
+### 用自己的数据接入
+
+将视频放到或通过软链接映射到以下结构。`/data/longvideo` 只是示例，可通过 `--video-root` 指定自己的根目录；无需复制、搬动或重新下载已有数据：
+
+```text
+<video-root>/LVBench/videos/<video_filename>
+<video-root>/LongVideoBench/videos/<video_filename>
+<video-root>/Video-MME/videos/<video_filename>
+<video-root>/MLVU/videos/<video_filename>
+```
+
+文件名使用 `video_ids80.txt` 第三列。若原始目录按任务或时长分层，可对所需文件逐个建立软链接；文件已平铺时也可链接整个 `videos` 目录。程序只读取这些本地路径，**不依赖下载器、下载账号或 `video_manifest.json`**。保持数据集视频的完整内容和时间轴，不能用同名截断片段替代。记录实际来源；不同版本或转码视频应重新准备帧和索引，不直接套用旧缓存。评分标签放在独立的 evaluation 目录，不能混入推理材料。
+
+### 可选：使用仓库自带的子集下载器
+
+只有需要这一下载方式时才运行，已有视频或自有渠道可跳过整个步骤：
 
 ```bash
 python download_videos.py --roster data/roster80.json --plan
-python download_videos.py /data/rebuttal597 --roster data/roster80.json
+python download_videos.py /data/longvideo --roster data/roster80.json
 ```
 
-上面只保存 80 题所需的 75 个视频。下载器内置全部 465 个视频的公开源位置，支持分卷续传和筛选解压；完整 597 题按分卷下载约需 600 GB 流量，建议至少 250 GB 可用空间。**80 题仍需下载所涉及的完整归档，流量不会按题数等比例减少。** 归档解压后会自动删除；以后扩展题单可能重新下载部分分卷。LongVideoBench 需要下载者自己的 Hugging Face 账户获得数据集访问权。脚本不指定网络加速方式。
-
-输出路径为 `/data/rebuttal597/<dataset>/videos/<official_filename>`，与预处理入口一致。公开源视频与旧机器的少数转码文件可能不同，必须重新生成帧和索引，不能套用旧缓存。
+脚本只保存这 75 个视频，按现有参考源计算约 18.33 GB；**这不是下载流量估计**。它会下载涉及的完整压缩分卷，再选择提取，分卷下载量可能接近数百 GB，且中途需要额外磁盘空间。此脚本的缓存策略建议至少 250 GB 可用空间；这个要求不适用于对方的逐视频下载方式。分卷支持续传，成功提取后删除本程序的缓存归档，后续扩展题单可能重新下载部分分卷。不指定 `--roster` 时仍仅处理冻结 597 题的 465 个视频，不是下载完整基准。
 
 ## 3. 预处理
 
@@ -83,7 +104,7 @@ python download_videos.py /data/rebuttal597 --roster data/roster80.json
 
 ```bash
 pip install faster-whisper
-python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda --per-dataset 20
+python -B pava.py prepare --config config.local.json --video-root /data/longvideo --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda --per-dataset 20
 ```
 
 已有字幕可将 `--asr-model ... --asr-device ...` 替换为 `--transcripts-dir /data/transcripts`。每个文件命名为 `<video_id>.json`，格式为：
@@ -115,11 +136,10 @@ python -B pava.py run --config config.local.json --work /data/pava128 --per-data
 tmux new-session -d -s pava80 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --per-dataset 20 --run-id pilot80 --execute > /data/pava128/pilot80.log 2>&1'
 ```
 
-第二版 597 题的命令已备好，**只在用户决定扩跑后执行**：
+第二版 597 题的命令已备好，**只在用户决定扩跑后执行**；先按同样的本地路径规则自行补齐新增视频，不限定下载方式：
 
 ```bash
-python download_videos.py /data/rebuttal597 --roster data/roster597.json
-python -B pava.py prepare --config config.local.json --video-root /data/rebuttal597 --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda
+python -B pava.py prepare --config config.local.json --video-root /data/longvideo --work /data/pava128 --openclip-checkpoint /models/open_clip_pytorch_model.bin --device cuda:0 --asr-model /models/faster-whisper-large-v3 --asr-device cuda
 tmux new-session -d -s pava597 'source .venv/bin/activate && python -u -B pava.py run --config config.local.json --work /data/pava128 --run-id main597 --execute > /data/pava128/main597.log 2>&1'
 ```
 
